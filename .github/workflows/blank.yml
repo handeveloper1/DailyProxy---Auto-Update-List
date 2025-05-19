@@ -46,11 +46,6 @@ jobs:
           mkdir -p "Proxy-Tsprnay"
           curl -o "Proxy-Tsprnay/https.txt" -L "https://raw.githubusercontent.com/Tsprnay/Proxy-lists/refs/heads/master/proxies/https.txt"
 
-      - name: Download proxies from gitrecon1455 repo
-        run: |
-          mkdir -p "Proxy-gitrecon1455"
-          curl -o "Proxy-gitrecon1455/proxies.txt" -L "https://raw.githubusercontent.com/gitrecon1455/ProxyScraper/refs/heads/main/proxies.txt"
-
       - name: Download proxies from KangProxy repo
         run: |
           mkdir -p "Proxy-KangProxy"
