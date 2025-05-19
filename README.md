@@ -21,5 +21,4 @@ A curated collection of fresh public proxies, automatically updated **every hour
 | [**Proxy-KangProxy**](https://github.com/handeveloper1/Proxy/tree/main/Proxy-KangProxy) | HTTPS, HTTP, SOCKS4, SOCKS5   |
 | [**Proxy-Tsprnay** ](https://github.com/handeveloper1/Proxy/tree/main/Proxy-Tsprnay)  | HTTPS                          |
 | [**Proxy-Zaeem20** ](https://github.com/handeveloper1/Proxy/tree/main/Proxy-Zaeem20)  | HTTPS                          |
-| [**Proxy-gitrecon1455**](https://github.com/handeveloper1/Proxy/tree/main/Proxy-gitrecon1455) | HTTPS                     |
 | [**Proxy-hedrikbgr**](https://github.com/handeveloper1/Proxy/tree/main/Proxy-hendrikbgr) | HTTPS                          |
