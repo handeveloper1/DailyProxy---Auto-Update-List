@@ -53,7 +53,7 @@ jobs:
 
       - name: Pull latest changes and push
         run: |
-          git add "Proxies-Ercin" "Proxy-hendrikbgr" "Proxy-Zaeem20" "Proxy-Tsprnay" "Proxy-gitrecon1455" "Proxy-KangProxy" README.md
+          git add "Proxies-Ercin" "Proxy-hendrikbgr" "Proxy-Zaeem20" "Proxy-Tsprnay" "Proxy-KangProxy" README.md
           if git diff --cached --quiet; then
             echo "No changes to commit."
             exit 0
