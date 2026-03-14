@@ -3,61 +3,64 @@ name: Sync Proxies Folder
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 * * * *'  # Her saat başı çalıştırır
+    - cron: '0 * * * *'
 
 jobs:
   sync_proxies:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout current repository
+      - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0  
+          fetch-depth: 0
 
-      - name: Configure Git
+      - name: Configure git
         run: |
           git config --global user.name "handeveloper1"
-          git config --global user.email "handeveloper1@gmail.com"
+          git config --global user.email "oguzhanyazman@gmail.com"
 
-      - name: Remove old proxies folders (if exist)
+      - name: Remove old folders
         run: |
-          rm -rf "Proxies-Ercin" "Proxy-Zaeem20" "Proxy-gitrecon1455" "Proxy-KangProxy" "Proxy-mzyui" "Proxy-TuanMinPay"
+          rm -rf Proxies-Ercin
+          rm -rf Proxy-Zaeem20
+          rm -rf Proxy-KangProxy
+          rm -rf Proxy-mzyui
+          rm -rf Proxy-TuanMinPay
 
-      - name: Clone only proxies folder
+      - name: Download proxies
         run: |
+
+          mkdir -p Proxies-Ercin
           git clone --depth=1 https://github.com/ErcinDedeoglu/proxies.git temp_repo
-          mkdir -p "Proxies-Ercin"
-          mv temp_repo/proxies/*.txt "Proxies-Ercin"
-          rm -rf temp_repo 
+          mv temp_repo/proxies/*.txt Proxies-Ercin/ || true
+          rm -rf temp_repo
 
-      - name: Download proxies from Zaeem20 repo
-        run: |
-          mkdir -p "Proxy-Zaeem20"
-          curl -o "Proxy-Zaeem20/https.txt" -L "https://raw.githubusercontent.com/Zaeem20/FREE_PROXIES_LIST/refs/heads/master/https.txt"
+          mkdir -p Proxy-Zaeem20
+          curl -L https://raw.githubusercontent.com/Zaeem20/FREE_PROXIES_LIST/master/https.txt -o Proxy-Zaeem20/https.txt
 
-      - name: Download proxies from KangProxy repo
-        run: |
-          mkdir -p "Proxy-KangProxy"
-          curl -o "Proxy-KangProxy/https.txt" -L "https://raw.githubusercontent.com/officialputuid/KangProxy/refs/heads/KangProxy/https/https.txt"
+          mkdir -p Proxy-KangProxy
+          curl -L https://raw.githubusercontent.com/officialputuid/KangProxy/KangProxy/https/https.txt -o Proxy-KangProxy/https.txt
 
-      - name: Download proxies from mzyui repo
-        run: |
-          mkdir -p "Proxy-mzyui"
-          curl -o "Proxy-mzyui/http.txt" -L "https://raw.githubusercontent.com/mzyui/proxy-list/refs/heads/main/http.txt"
+          mkdir -p Proxy-mzyui
+          curl -L https://raw.githubusercontent.com/mzyui/proxy-list/main/http.txt -o Proxy-mzyui/http.txt
 
-      - name: Download proxies from TuanMinPay repo
-        run: |
-          mkdir -p "Proxy-TuanMinPay"
-          curl -o "Proxy-TuanMinPay/http.txt" -L "https://raw.githubusercontent.com/TuanMinPay/live-proxy/refs/heads/master/http.txt"
+          mkdir -p Proxy-TuanMinPay
+          curl -L https://raw.githubusercontent.com/TuanMinPay/live-proxy/master/http.txt -o Proxy-TuanMinPay/http.txt
 
-      - name: Pull latest changes and push
+      - name: Show downloaded files
         run: |
-          git add "Proxies-Ercin" "Proxy-Zaeem20" "Proxy-KangProxy" "Proxy-mzyui" "Proxy-TuanMinPay" README.md
+          echo "FILES:"
+          ls -R
+
+      - name: Commit and push
+        run: |
+          git add .
           if git diff --cached --quiet; then
-            echo "No changes to commit."
+            echo "No changes"
             exit 0
           fi
-          git commit -m "Updated proxies (UTC+3: $(date --date='3 hours' +'%Y-%m-%d %H:%M:%S'))"
-          git pull --rebase origin main || git rebase --skip
-          git push origin main
+
+          git commit -m "Updated proxies $(date)"
+          git pull --rebase origin main || true
+          git push
