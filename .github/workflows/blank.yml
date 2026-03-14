@@ -18,11 +18,11 @@ jobs:
       - name: Configure Git
         run: |
           git config --global user.name "handeveloper1"
-          git config --global user.email "oguzhanyazman@gmail.com"
+          git config --global user.email "handeveloper1@gmail.com"
 
       - name: Remove old proxies folders (if exist)
         run: |
-          rm -rf "Proxies-Ercin" "Proxy-Zaeem20" "Proxy-gitrecon1455" "Proxy-KangProxy"
+          rm -rf "Proxies-Ercin" "Proxy-Zaeem20" "Proxy-gitrecon1455" "Proxy-KangProxy" "Proxy-mzyui" "Proxy-TuanMinPay"
 
       - name: Clone only proxies folder
         run: |
@@ -41,9 +41,19 @@ jobs:
           mkdir -p "Proxy-KangProxy"
           curl -o "Proxy-KangProxy/https.txt" -L "https://raw.githubusercontent.com/officialputuid/KangProxy/refs/heads/KangProxy/https/https.txt"
 
+      - name: Download proxies from mzyui repo
+        run: |
+          mkdir -p "Proxy-mzyui"
+          curl -o "Proxy-mzyui/http.txt" -L "https://raw.githubusercontent.com/mzyui/proxy-list/refs/heads/main/http.txt"
+
+      - name: Download proxies from TuanMinPay repo
+        run: |
+          mkdir -p "Proxy-TuanMinPay"
+          curl -o "Proxy-TuanMinPay/http.txt" -L "https://raw.githubusercontent.com/TuanMinPay/live-proxy/refs/heads/master/http.txt"
+
       - name: Pull latest changes and push
         run: |
-          git add "Proxies-Ercin" "Proxy-Zaeem20" "Proxy-KangProxy" README.md
+          git add "Proxies-Ercin" "Proxy-Zaeem20" "Proxy-KangProxy" "Proxy-mzyui" "Proxy-TuanMinPay" README.md
           if git diff --cached --quiet; then
             echo "No changes to commit."
             exit 0
