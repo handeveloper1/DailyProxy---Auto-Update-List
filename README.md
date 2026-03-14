@@ -17,6 +17,8 @@ A curated collection of fresh public proxies, automatically updated **every hour
 
 | Proxy Provider      | Supported Protocols             |
 |---------------------|--------------------------------|
+| [**Proxy-TuanMinPay**](https://github.com/handeveloper1/DailyProxy---Auto-Update-List/blob/main/Proxy-TuanMinPay/http.txt) | HTTPS                          |
+| [**Proxy-mzyuir**](https://github.com/handeveloper1/DailyProxy---Auto-Update-List/tree/main/Proxy-mzyui) | HTTPS                          |
 | [**Proxies-Ercin** ](https://github.com/handeveloper1/Proxy/tree/main/Proxies-Ercin)  | HTTPS, HTTP, SOCKS4, SOCKS5   |
 | [**Proxy-KangProxy**](https://github.com/handeveloper1/Proxy/tree/main/Proxy-KangProxy) | HTTPS, HTTP, SOCKS4, SOCKS5   |
 | [**Proxy-Tsprnay** ](https://github.com/handeveloper1/Proxy/tree/main/Proxy-Tsprnay)  | HTTPS                          |
